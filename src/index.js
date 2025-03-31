@@ -25,19 +25,38 @@
 // npm i chalk@"5.2.0 - 5.6.0" - установить актуальную версию в диапазоне от 5.2.0 до 5.6.0
 
 import chalk from 'chalk';
+import { config } from 'dotenv';
+
+// Запускаем процесс считывания переменных окружения
+config();
 
 if (!process.argv[2]) {
-  console.error(chalk.red('Enter value, please!'));
+  console.log(process.env.COLORIZE);
+  if (process.env.COLORIZE && process.env.COLORIZE === 'no') {
+    console.log('Enter value, please!');
+  } else {
+    console.log(chalk.red('Enter value, please!'));
+  }
   process.exit(1);
 }
 
 if (!parseFloat(process.argv[2])) {
-  console.log(chalk.magenta('Enter integer, please!'));
+  if (process.env.COLORIZE && process.env.COLORIZE === 'no') {
+    console.log('Enter integer, please!');
+  } else {
+    console.log(chalk.magenta('Enter integer, please!'));
+  }
   process.exit(1);
 }
 
-console.log(
-  chalk.green(
+if (process.env.COLORIZE && process.env.COLORIZE === 'no') {
+  console.log(
     `Inches ${process.argv[2]} it's ${process.argv[2] * 2.54} in santimeters`,
-  ),
-);
+  );
+} else {
+  console.log(
+    chalk.green(
+      `Inches ${process.argv[2]} it's ${process.argv[2] * 2.54} in santimeters`,
+    ),
+  );
+}
