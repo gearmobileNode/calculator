@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "convert": "node src/index.js"
   },
   "keywords": [
     "node",
