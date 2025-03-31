@@ -51,12 +51,12 @@ if (!parseFloat(process.argv[2])) {
 
 if (process.env.COLORIZE && process.env.COLORIZE === 'no') {
   console.log(
-    `Inches ${process.argv[2]} it's ${process.argv[2] * 2.54} in santimeters`,
+    `Inches ${process.argv[2]} it's ${chalk.yellow('>>>')} ${process.argv[2] * 2.54} in santimeters`,
   );
 } else {
   console.log(
     chalk.green(
-      `Inches ${process.argv[2]} it's ${process.argv[2] * 2.54} in santimeters`,
+      `Inches ${process.argv[2]} it's ${chalk.yellow('>>>')} ${process.argv[2] * 2.54} in santimeters`,
     ),
   );
 }
